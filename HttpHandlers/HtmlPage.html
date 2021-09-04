@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form method="POST" name="XY">
+        <input type="number" id="X" name="X"/>
+        <input type="number" id="Y" name="Y"/>
+        <button type="submit">Send</button>
+        <button type="button" onclick="SendForm()">SendXMLRec</button>
+    </form>
+    <script>
+        function SendForm() {
+            var formData = new FormData(document.forms.XY);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", document.URL);
+
+            xhr.onreadystatechange = function () {
+                if (this.readyState != 4) return;
+
+                alert(this.responseText);
+            }
+
+            xhr.send(formData);
+        }
+    </script>
+</body>
+</html>
