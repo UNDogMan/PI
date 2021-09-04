@@ -20,6 +20,7 @@ namespace PD.DataEF.Repository
 
         public async Task AddRecord(PhoneDictionaryModel record)
         {
+            record.ID = Guid.NewGuid();
             _context.DictionaryRecords.Add(record);
             await _context.SaveChangesAsync();
         }

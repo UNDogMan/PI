@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpHandlers", "HttpHandler
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsFormsApp\WindowsFormsApp.csproj", "{038DA44C-7D46-41D3-B545-381C882A28E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDApplication", "PDApplication\PDApplication.csproj", "{A8B8F673-F542-46E1-B843-D98E04E739E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PD.Application", "PDApplication\PD.Application.csproj", "{A8B8F673-F542-46E1-B843-D98E04E739E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PD.DataCore", "PD.DataCore\PD.DataCore.csproj", "{E5501BF9-C3A7-4AEF-90B8-ED779CA4E117}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PD.DataJson", "PD.DataJson\PD.DataJson.csproj", "{7577992F-54E7-49A5-8050-FD51AF31CC28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PD.DataEF", "PD.DataEF\PD.DataEF.csproj", "{890E081F-1D6A-4198-9989-6DC43A75B1CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PD.DataEF", "PD.DataEF\PD.DataEF.csproj", "{890E081F-1D6A-4198-9989-6DC43A75B1CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

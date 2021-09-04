@@ -6,6 +6,7 @@ using System.Web;
 using PD.DataCore.Interfaces;
 using PD.DataJson.Repository;
 using PD.DataEF.Repository;
+using PDApplication.Utils;
 
 namespace PDApplication.App_Start
 {
@@ -13,10 +14,16 @@ namespace PDApplication.App_Start
     {
         public override void Load()
         {
-            Bind<IPhoneDictionary>().To<JsonPhoneRepository>();
-            //Bind<IPhoneDictionary>()
-            //    .To<EFPhoneDictionaryRepository>()
-            //    .WithConstructorArgument("nameOrConnectionString", "de");
+            if (!AppSettings.UseDB)
+            {
+                Bind<IPhoneDictionary>().To<JsonPhoneRepository>();
+            }
+            else
+            {
+                Bind<IPhoneDictionary>()
+                    .To<EFPhoneDictionaryRepository>()
+                    .WithConstructorArgument("nameOrConnectionString", "defaultLocal");
+            }
 
         }
     }
