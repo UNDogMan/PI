@@ -4,12 +4,12 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:10242",
+      "applicationUrl": "http://localhost:20240",
       "sslPort": 0
     }
   },
   "profiles": {
-    "PD.WebAPICore": {
+    "PD.WebApiCore": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

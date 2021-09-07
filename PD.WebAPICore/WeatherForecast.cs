@@ -1,5 +1,5 @@
 
-namespace PD.WebAPICore;
+namespace PD.WebApiCore;
 public class WeatherForecast
 {
     public DateTime Date { get; set; }

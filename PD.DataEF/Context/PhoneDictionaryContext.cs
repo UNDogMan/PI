@@ -12,6 +12,7 @@ namespace PD.DataEF.Context
     {
         public PhoneDictionaryContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
+
         }
 
         public DbSet<PhoneDictionaryModel> DictionaryRecords { get; set; }
