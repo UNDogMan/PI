@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,9 @@ namespace PD.DataEF.Repository
 
         public async Task<IEnumerable<PhoneDictionaryModel>> GetRecords()
         {
-            return _context.DictionaryRecords.AsEnumerable();
+            var list = await _context.DictionaryRecords.ToListAsync();
+            list.Sort((x, y) => x.Surname.CompareTo(y.Surname));
+            return list.AsEnumerable();
         }
 
         public async Task UpdateRecord(PhoneDictionaryModel record)

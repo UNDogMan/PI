@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Web;
 
@@ -35,7 +36,7 @@ namespace HttpHandlers
 
         private void DoGet(HttpContext context)
         {
-            context.Response.Write(File.ReadAllText(@"D:\box\PI\HttpHandlers\HtmlPage.html"));
+            context.Response.Write(File.ReadAllText(ConfigurationManager.AppSettings["httpFile"]));
         }
 
         private void DoPost(HttpContext context)

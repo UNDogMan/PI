@@ -40,8 +40,8 @@ namespace HttpHandlers
             int i = 0;
             while (_socket.State == WebSocketState.Open)
             {
-                System.Threading.Thread.Sleep(1000);
-                await Send($"[{i++}]");
+                System.Threading.Thread.Sleep(2000);
+                await Send(DateTime.Now.ToString());
             }
         }
 

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 namespace PD.WebApiCore;
 public class Program

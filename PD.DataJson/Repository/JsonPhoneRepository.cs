@@ -65,7 +65,9 @@ namespace PD.DataJson.Repository
         {
             return Task.Run(() =>
             {
-                return _records.AsEnumerable();
+                var list = _records.ToList();
+                list.Sort((x, y) => x.Surname.CompareTo(y.Surname));
+                return list.AsEnumerable();
             });
         }
 
