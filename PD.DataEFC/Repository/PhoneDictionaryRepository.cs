@@ -1,4 +1,5 @@
-﻿using PD.DataCore.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PD.DataCore.Models;
 using PD.DataEFC.Context;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace PD.DataEFC.Repository
 
         public async Task<IEnumerable<PhoneDictionaryModel>> GetRecords()
         {
-            return _context.DictionaryRecords.AsEnumerable();
+            return await _context.DictionaryRecords.ToListAsync();
         }
 
         public async Task UpdateRecord(PhoneDictionaryModel record)

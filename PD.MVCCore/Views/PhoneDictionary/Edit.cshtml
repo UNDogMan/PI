@@ -6,7 +6,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("EditSave", "Dict"))
+@using (Html.BeginForm("Edit", "PhoneDictionary"))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.ID)

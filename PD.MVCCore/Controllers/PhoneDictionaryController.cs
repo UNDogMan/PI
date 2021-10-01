@@ -1,81 +1,70 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PD.DataCore.Interfaces;
+using PD.DataCore.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace PD.MVCCore.Controllers;
 public class PhoneDictionaryController : Controller
 {
-    // GET: PhoneDictionaryController
-    public ActionResult Index()
+    private readonly IPhoneDictionary _dictionary;
+
+    public PhoneDictionaryController(IPhoneDictionary dictionary)
+    {
+        _dictionary = dictionary;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult> Index()
+    {
+        return View(await _dictionary.GetRecords());
+    }
+
+    [HttpGet]
+    public ActionResult Add()
     {
         return View();
     }
 
-    // GET: PhoneDictionaryController/Details/5
-    public ActionResult Details(int id)
+    [HttpGet]
+    public async Task<ActionResult> Edit(Guid id)
     {
-        return View();
+        return View(await _dictionary.GetRecordById(id));
     }
 
-    // GET: PhoneDictionaryController/Create
-    public ActionResult Create()
+    [HttpGet]
+    public async Task<ActionResult> Delete(Guid id)
     {
-        return View();
+        return View(await _dictionary.GetRecordById(id));
     }
 
-    // POST: PhoneDictionaryController/Create
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Create(IFormCollection collection)
+    public async Task<ActionResult> Add([Bind("Surname", "PhoneNum")] PhoneDictionaryModel model)
     {
-        try
+        if (ModelState.IsValid)
         {
-            return RedirectToAction(nameof(Index));
+            await _dictionary.AddRecord(model);
+            return RedirectToAction("Index");
         }
-        catch
-        {
-            return View();
-        }
+        return View(model);
     }
 
-    // GET: PhoneDictionaryController/Edit/5
-    public ActionResult Edit(int id)
-    {
-        return View();
-    }
-
-    // POST: PhoneDictionaryController/Edit/5
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public async Task<ActionResult> Edit([Bind("ID", "Surname", "PhoneNum")] PhoneDictionaryModel model)
     {
-        try
+        if (ModelState.IsValid)
         {
-            return RedirectToAction(nameof(Index));
+            await _dictionary.UpdateRecord(model);
+            return RedirectToAction("Index");
         }
-        catch
-        {
-            return View();
-        }
+        return View(model);
     }
 
-    // GET: PhoneDictionaryController/Delete/5
-    public ActionResult Delete(int id)
-    {
-        return View();
-    }
-
-    // POST: PhoneDictionaryController/Delete/5
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
+    public async Task<ActionResult> DeleteSave(Guid id)
     {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
+        await _dictionary.DeleteRecord(id);
+        return RedirectToAction("Index");
     }
 }

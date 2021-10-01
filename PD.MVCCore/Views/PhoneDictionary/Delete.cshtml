@@ -29,7 +29,7 @@
 
     </dl>
 
-    @using (Html.BeginForm("DeleteSave", "Dict")) {
+    @using (Html.BeginForm("DeleteSave", "PhoneDictionary")) {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(x => x.ID)
         <div class="form-actions no-color">
