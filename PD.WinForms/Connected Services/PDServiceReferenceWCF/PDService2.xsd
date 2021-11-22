@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PD.DataCore.Models" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PD.DataCore.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://172.16.193.234:42104/wcf/PDService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfPhoneDictionaryModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhoneDictionaryModel" nillable="true" type="tns:PhoneDictionaryModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhoneDictionaryModel" nillable="true" type="tns:ArrayOfPhoneDictionaryModel" />
+  <xs:complexType name="PhoneDictionaryModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="PhoneNum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneDictionaryModel" nillable="true" type="tns:PhoneDictionaryModel" />
+</xs:schema>

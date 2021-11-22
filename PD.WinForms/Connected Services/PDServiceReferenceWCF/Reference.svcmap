@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="15a38f1d-4478-4d1c-a5b4-1613e9b122e7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://172.16.193.234:42104/wcf/PDService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PDService.xsd" MetadataType="Schema" ID="dd81963d-4679-4125-880a-5d71bedc32e4" SourceId="1" SourceUrl="http://172.16.193.234:42104/wcf/PDService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PDService1.xsd" MetadataType="Schema" ID="2dfc3de2-748c-4dd1-bafd-632085f8d139" SourceId="1" SourceUrl="http://172.16.193.234:42104/wcf/PDService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PDService.wsdl" MetadataType="Wsdl" ID="05bca411-4732-4408-94b7-564ca5c91d49" SourceId="1" SourceUrl="http://172.16.193.234:42104/wcf/PDService.svc?wsdl" />
+    <MetadataFile FileName="PDService2.xsd" MetadataType="Schema" ID="7c378ea9-aefb-4364-92fc-c4355d56cac2" SourceId="1" SourceUrl="http://172.16.193.234:42104/wcf/PDService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PDService.disco" MetadataType="Disco" ID="d37913a3-41fb-4c3b-8696-9699b59d8d19" SourceId="1" SourceUrl="http://172.16.193.234:42104/wcf/PDService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -35,5 +35,10 @@ namespace PD.DataCore.Models
             hashCode = hashCode * -1521134295 + ID.GetHashCode();
             return hashCode;
         }
+
+        public override string ToString()
+        {
+            return $"{Surname} - {PhoneNum}";
+        }
     }
 }
