@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PD.DataCore.Models
 {
+    [DataContract]
     public class PhoneDictionaryModel
     {
+        [DataMember]
         public Guid ID { get; set; }
+
+        [DataMember]
         [Required]
         public string Surname { get; set; }
+
+
+        [DataMember]
         [Required]
         public string PhoneNum { get; set; }
 
