@@ -1,0 +1,119 @@
+﻿@using PD.DataCore.Models
+
+<div>
+    <form id="form">
+        <input type="hidden" id="ID" name="ID"/>
+        <div class="form-group">
+            <label for="Surname">Surname</label>
+            <input class="form-control" type="text" name="Surname" id="Surname">
+        </div>
+        <div class="form-group">
+            <label for="PhoneNum">Number</label>
+            <input class="form-control" type="text" name="PhoneNum" id="PhoneNum">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="sendRow()">Submit</button>
+        <button type="button" class="btn btn-xs" onclick="clearForm()">Cancel</button>
+    </form>
+</div>
+
+<div>
+    <table class="table" id="data">
+        <tr>
+            <th>
+                Surname
+            </th>
+            <th>
+                PhoneNum
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </table>
+</div>
+
+@section scripts {
+    <script>
+        var method = "POST";
+
+        var updData = function () {
+            $('#data tr td').parent().remove()
+            $.getJSON("/api/PD", function (data) {
+                console.log(data);
+                data.forEach((obj, indx, arr) => {
+                    $('#data').append(`
+                            <tr>
+                                <td>
+                                    ${obj.Surname}
+                                </td>
+                                <td>
+                                    ${obj.PhoneNum}
+                                </td>
+                                <td>
+                                    <button type="button" class="btn" onclick="delRow('${obj.ID}')">Delete</button>
+                                    <button type="button" class="btn" onclick="updRow('${obj.ID}')">Update</button>
+                                </td>
+                            </tr >
+                        `);
+                });
+            })
+        }
+
+        var delRow = function (id) {
+            if (confirm('Delete Row?')) {
+                $.ajax({
+                    url: "/api/PD/" + id,
+                    type: "DELETE",
+                    success: updData
+                }
+                )
+            }
+        }
+
+        var sendRow = function () {
+            var data = {};
+            $.each($('#form').serializeArray(), function (_, kv) {
+                if (data.hasOwnProperty(kv.name)) {
+                    data[kv.name] = $.makeArray(paramObj[kv.name]);
+                    data[kv.name].push(kv.value);
+                }
+                else {
+                    data[kv.name] = kv.value;
+                }
+            });
+
+            $.ajax({
+                url: method == "POST" ? "/api/PD" : "/api/PD/" + data.ID,
+                type: method,
+                data: data,
+                success: updData
+            }
+            )
+
+            clearForm();
+        }
+
+        var updRow = function (id) {
+            $.getJSON("/api/PD/" + id, function (row) {
+                $('#ID').val(row.ID);
+                $('#Surname').val(row.Surname);
+                $('#PhoneNum').val(row.PhoneNum);
+
+                method = "PUT";
+            });
+        }
+
+        var clearForm = function () {
+
+            $('#ID').val('');
+            $('#Surname').val('');
+            $('#PhoneNum').val('');
+
+            method = "POST";
+        }
+
+        $(document).ready(
+            updData()
+        )
+    </script>
+}
