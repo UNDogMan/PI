@@ -41,39 +41,33 @@ namespace PD.ASMX
         }
 
         [WebMethod]
-        public List<PhoneDictionaryModel> GetAllSync()
+        public List<PhoneDictionaryModel> GetAll()
         {
             return _dictionary.GetRecords().Result.ToList();
         }
 
         [WebMethod]
-        public async Task<List<PhoneDictionaryModel>> GetAll()
+        public PhoneDictionaryModel Get(Guid id)
         {
-            return (await _dictionary.GetRecords()).ToList();
+            return _dictionary.GetRecordById(id).Result;
         }
 
         [WebMethod]
-        public async Task<PhoneDictionaryModel> Get(Guid id)
+        public void Post(PhoneDictionaryModel value)
         {
-            return await _dictionary.GetRecordById(id);
+            _dictionary.AddRecord(value).Wait();
         }
 
         [WebMethod]
-        public async Task Post(PhoneDictionaryModel value)
+        public void Put(PhoneDictionaryModel value)
         {
-            await _dictionary.AddRecord(value);
+            _dictionary.UpdateRecord(value).Wait();
         }
 
         [WebMethod]
-        public async Task Put(PhoneDictionaryModel value)
+        public void Delete(Guid id)
         {
-            await _dictionary.UpdateRecord(value);
-        }
-
-        [WebMethod]
-        public async Task Delete(Guid id)
-        {
-            await _dictionary.DeleteRecord(id);
+            _dictionary.DeleteRecord(id).Wait();
         }
     }
 }

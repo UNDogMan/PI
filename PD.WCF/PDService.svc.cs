@@ -27,34 +27,29 @@ namespace PD.WCF
             }
         }
 
-        public List<PhoneDictionaryModel> GetAllSync()
+        public List<PhoneDictionaryModel> GetAll()
         {
             return _dictionary.GetRecords().Result.ToList();
         }
 
-        public async Task<List<PhoneDictionaryModel>> GetAll()
+        public PhoneDictionaryModel Get(Guid id)
         {
-            return (await _dictionary.GetRecords()).ToList();
+            return _dictionary.GetRecordById(id).Result;
         }
 
-        public async Task<PhoneDictionaryModel> Get(Guid id)
+        public void Add(PhoneDictionaryModel value)
         {
-            return await _dictionary.GetRecordById(id);
+            _dictionary.AddRecord(value).Wait();
         }
 
-        public async Task Add(PhoneDictionaryModel value)
+        public void Update(PhoneDictionaryModel value)
         {
-            await _dictionary.AddRecord(value);
+            _dictionary.UpdateRecord(value).Wait();
         }
 
-        public async Task Update(PhoneDictionaryModel value)
+        public void Delete(Guid id)
         {
-            await _dictionary.UpdateRecord(value);
-        }
-
-        public async Task Delete(Guid id)
-        {
-            await _dictionary.DeleteRecord(id);
+            _dictionary.DeleteRecord(id).Wait();
         }
     }
 }

@@ -15,22 +15,19 @@ namespace PD.WCF
     public interface IPDService
     {
         [OperationContract]
-        List<PhoneDictionaryModel> GetAllSync();
+        List<PhoneDictionaryModel> GetAll();
 
         [OperationContract]
-        Task<List<PhoneDictionaryModel>> GetAll();
+        PhoneDictionaryModel Get(Guid id);
 
         [OperationContract]
-        Task<PhoneDictionaryModel> Get(Guid id);
+        void Add(PhoneDictionaryModel value);
 
         [OperationContract]
-        Task Add(PhoneDictionaryModel value);
+        void Update(PhoneDictionaryModel value);
 
         [OperationContract]
-        Task Update(PhoneDictionaryModel value);
-
-        [OperationContract]
-        Task Delete(Guid id);
+        void Delete(Guid id);
 
     }
 }
