@@ -36,6 +36,7 @@ namespace PD.WinForms
         {
             service.UseASMX();
             labelService.Text = $"Service: {Services.ASMX}";
+            UpdateListView();
             buttonClear_Click(null, null);
         }
 
@@ -43,6 +44,7 @@ namespace PD.WinForms
         {
             service.UseWCF();
             labelService.Text = $"Service: {Services.WCF}";
+            UpdateListView();
             buttonClear_Click(null, null);
         }
 

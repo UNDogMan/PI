@@ -12,11 +12,18 @@ namespace PD.DataJson.Repository
 {
     public class JsonPhoneRepository : IPhoneDictionary
     {
-        private string FilePath { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dict.json"); }
+        private string fileName = "Dict.json";
+        private string FilePath { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), fileName); }
         private ICollection<PhoneDictionaryModel> _records;
 
-        public JsonPhoneRepository()
+        public JsonPhoneRepository() : this("Dict.json")
         {
+
+        }
+
+        public JsonPhoneRepository(string fileName)
+        {
+            this.fileName = fileName;
             if (File.Exists(FilePath))
             {
                 _records = JsonConvert.DeserializeObject<ICollection<PhoneDictionaryModel>>(File.ReadAllText(FilePath));

@@ -23,7 +23,7 @@ namespace PD.WCF
             }
             else
             {
-                _dictionary = new DataJson.Repository.JsonPhoneRepository();
+                _dictionary = new DataJson.Repository.JsonPhoneRepository("DictWCF.json");
             }
         }
 

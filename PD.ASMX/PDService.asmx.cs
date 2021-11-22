@@ -30,7 +30,7 @@ namespace PD.ASMX
             }
             else
             {
-                _dictionary = new DataJson.Repository.JsonPhoneRepository();
+                _dictionary = new DataJson.Repository.JsonPhoneRepository("DictASMX.json");
             }
         }
 
